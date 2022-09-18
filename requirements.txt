@@ -1,0 +1,6 @@
+psycopg2
+selenium
+pytz
+undetected-chromedriver
+requests
+APScheduler==3.9.1
