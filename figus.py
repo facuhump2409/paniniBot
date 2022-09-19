@@ -35,13 +35,15 @@ def searchFigusStock():
     time.sleep(5)
     print(driver.title)
     try:
-        stock = driver.find_element(By.XPATH, "(//span[@class='label-ko'])[1]").text
+        stock = driver.find_element(By.XPATH, "(//span[@class='label-text'])[1]").text
         print("Encontramos la palabra: {}", stock)
         if (stock != 'SIN STOCK'):
             sendStockMessage()
     except:
-        print("Hubo un error, entonces no hay stock")
+        print("Hubo un error, entonces hay stock")
         sendStockMessage()
+    driver.close()
+    driver.quit()
 
 
 sched.start()
