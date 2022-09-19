@@ -20,7 +20,7 @@ def sendStockMessage():
     requests.get(url=URL)
 
 
-@sched.scheduled_job('interval', minutes=1)
+@sched.scheduled_job('interval', minutes=5)
 def searchFigusStock():
     print("Arranca Panini")
     chrome_options = uc.ChromeOptions()
@@ -36,7 +36,7 @@ def searchFigusStock():
     print(driver.title)
     try:
         stock = driver.find_element(By.XPATH, "(//span[@class='label-text'])[1]").text
-        print("Encontramos la palabra: {}", stock)
+        print("Encontramos la palabra: ", stock)
         if (stock != 'SIN STOCK'):
             sendStockMessage()
     except:
